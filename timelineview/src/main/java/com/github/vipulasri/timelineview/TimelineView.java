@@ -22,6 +22,7 @@ import java.lang.annotation.RetentionPolicy;
 public class TimelineView extends View {
 
     public static final String TAG = TimelineView.class.getSimpleName();
+    private Boolean mTransparent = Boolean.FALSE;
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({LineOrientation.HORIZONTAL, LineOrientation.VERTICAL})
@@ -179,15 +180,21 @@ public class TimelineView extends View {
 
                 mStartLineStopX = mBounds.centerX();
                 //FIX
-                //mStartLineStopY = mBounds.top - mLinePadding;
-                mStartLineStopY = (mBounds.top + mBounds.bottom)/2;
+                if(mTransparent) {
+                    mStartLineStopY = (mBounds.top + mBounds.bottom) / 2;
+                }else {
+                    mStartLineStopY = mBounds.top - mLinePadding;
+                }
             }
 
             if(mDrawEndLine) {
                 mEndLineStartX = mBounds.centerX();
                 //FIX
-                //mEndLineStartY = mBounds.bottom + mLinePadding;
-                mEndLineStartY = (mBounds.top + mBounds.bottom)/2;
+                if(mTransparent) {
+                    mEndLineStartY = (mBounds.top + mBounds.bottom) / 2;
+                }else {
+                    mEndLineStartY = mBounds.bottom + mLinePadding;
+                }
                 mEndLineStopX = mBounds.centerX();
                 mEndLineStopY = getHeight();
             }
@@ -236,8 +243,9 @@ public class TimelineView extends View {
      *
      * @param marker will set marker drawable to timeline
      */
-    public void setMarker(Drawable marker) {
+    public void setMarker(Drawable marker, Boolean transparent) {
         mMarker = marker;
+        mTransparent = transparent;
         initTimeline();
     }
 
@@ -428,7 +436,7 @@ public class TimelineView extends View {
         } else if(position == 0) {
             return LineType.START;
         } else if(position == totalSize - 1) {
-            return LineType.END;
+            return LineType.NORMAL;
         } else {
             return LineType.NORMAL;
         }
