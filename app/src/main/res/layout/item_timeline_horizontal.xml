@@ -50,6 +50,6 @@
         app:startLineColor="@color/colorAccent"
         app:endLineColor="@color/colorAccent"
         app:lineOrientation="horizontal"
-        app:lineStyle="dash"/>
+        app:lineStyle="normal"/>
 
 </LinearLayout>

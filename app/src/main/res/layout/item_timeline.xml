@@ -1,33 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp">
 
-    <com.github.vipulasri.timelineview.TimelineView
-        android:id="@+id/timeline"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:markerSize="20dp"
-        app:lineWidth="3dp"
-        app:startLineColor="@color/colorAccent"
-        app:endLineColor="@color/colorAccent"
-        app:lineStyle="dash"/>
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
+        android:id="@+id/card"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="5dp"
-        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="15dp"
         app:cardBackgroundColor="@color/colorGrey50"
-        app:contentPadding="15dp">
+        app:contentPadding="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/timeline"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_wrapHeight="184"
+        tools:layout_conversion_wrapWidth="989">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,22 +33,39 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_timeline_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/text_timeline_date"
                 android:textSize="12sp"
-                tools:text="24 JAN"/>
+                tools:text="24 JAN" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_timeline_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:id="@+id/text_timeline_title"
                 android:textColor="@android:color/black"
-                tools:text="Order Successfully Completed"/>
+                tools:text="Order Successfully Completed" />
 
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
-</LinearLayout>
+    <com.github.vipulasri.timelineview.TimelineView
+        android:id="@+id/timeline"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginLeft="5dp"
+        app:endLineColor="@color/colorAccent"
+        app:layout_constraintLeft_toRightOf="@id/card"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:lineStyle="normal"
+        app:lineWidth="3dp"
+        app:markerSize="20dp"
+        app:startLineColor="@color/colorAccent"
+        tools:layout_conversion_wrapHeight="53"
+        tools:layout_conversion_wrapWidth="53" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

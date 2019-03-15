@@ -41,6 +41,7 @@ class TimeLineAdapter(private val mFeedList: List<TimeLineModel>, private var mA
     override fun onBindViewHolder(holder: TimeLineViewHolder, position: Int) {
 
         val timeLineModel = mFeedList[position]
+        val transparent = holder.timeline.context.resources.getColor(android.R.color.transparent)
 
         when {
             timeLineModel.status == OrderStatus.INACTIVE -> {
@@ -50,7 +51,7 @@ class TimeLineAdapter(private val mFeedList: List<TimeLineModel>, private var mA
                 holder.timeline.marker = VectorDrawableUtils.getDrawable(holder.itemView.context, R.drawable.ic_marker_active,  mAttributes.markerColor)
             }
             else -> {
-                holder.timeline.setMarker(ContextCompat.getDrawable(holder.itemView.context, R.drawable.ic_marker), mAttributes.markerColor)
+                holder.timeline.setMarker(ContextCompat.getDrawable(holder.itemView.context, R.drawable.ic_marker), transparent)
             }
         }
 

@@ -41,7 +41,7 @@ class ExampleTimeLineAdapter(private val mFeedList: List<TimeLineModel>) : Recyc
                 setMarker(holder, R.drawable.ic_marker_active, R.color.material_grey_500)
             }
             else -> {
-                setMarker(holder, R.drawable.ic_marker, R.color.material_grey_500)
+                setMarker(holder, R.drawable.ic_marker_null, android.R.color.transparent)
             }
         }
 

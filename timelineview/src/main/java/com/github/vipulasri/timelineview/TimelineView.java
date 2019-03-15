@@ -178,12 +178,16 @@ public class TimelineView extends View {
                 }
 
                 mStartLineStopX = mBounds.centerX();
-                mStartLineStopY = mBounds.top - mLinePadding;
+                //FIX
+                //mStartLineStopY = mBounds.top - mLinePadding;
+                mStartLineStopY = (mBounds.top + mBounds.bottom)/2;
             }
 
             if(mDrawEndLine) {
                 mEndLineStartX = mBounds.centerX();
-                mEndLineStartY = mBounds.bottom + mLinePadding;
+                //FIX
+                //mEndLineStartY = mBounds.bottom + mLinePadding;
+                mEndLineStartY = (mBounds.top + mBounds.bottom)/2;
                 mEndLineStopX = mBounds.centerX();
                 mEndLineStopY = getHeight();
             }
