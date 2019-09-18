@@ -13,12 +13,22 @@ import androidx.fragment.app.FragmentManager
 import com.github.vipulasri.timelineview.TimelineView
 import com.github.vipulasri.timelineview.sample.model.Orientation
 import com.github.vipulasri.timelineview.sample.model.TimelineAttributes
-import com.github.vipulasri.timelineview.sample.utils.Utils
 import com.github.vipulasri.timelineview.sample.widgets.BorderedCircle
 import com.github.vipulasri.timelineview.sample.widgets.RoundedCornerBottomSheet
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.thebluealliance.spectrum.SpectrumDialog
-import kotlinx.android.synthetic.main.bottom_sheet_options.*
+import kotlinx.android.synthetic.main.bottom_sheet_options.button_apply
+import kotlinx.android.synthetic.main.bottom_sheet_options.checkbox_marker_in_center
+import kotlinx.android.synthetic.main.bottom_sheet_options.image_end_line_color
+import kotlinx.android.synthetic.main.bottom_sheet_options.image_marker_color
+import kotlinx.android.synthetic.main.bottom_sheet_options.image_start_line_color
+import kotlinx.android.synthetic.main.bottom_sheet_options.rg_orientation
+import kotlinx.android.synthetic.main.bottom_sheet_options.seek_line_dash_gap
+import kotlinx.android.synthetic.main.bottom_sheet_options.seek_line_dash_width
+import kotlinx.android.synthetic.main.bottom_sheet_options.seek_line_width
+import kotlinx.android.synthetic.main.bottom_sheet_options.seek_marker_line_padding
+import kotlinx.android.synthetic.main.bottom_sheet_options.seek_marker_size
+import kotlinx.android.synthetic.main.bottom_sheet_options.spinner_line_type
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
@@ -49,10 +59,8 @@ class TimelineAttributesBottomSheet: RoundedCornerBottomSheet() {
     override fun onStart() {
         super.onStart()
 
-        if (dialog != null) {
-            val bottomSheet = dialog.findViewById<View>(R.id.design_bottom_sheet)
-            bottomSheet.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
-        }
+        val bottomSheet = dialog.findViewById<View>(R.id.design_bottom_sheet)
+        bottomSheet?.layoutParams?.height = ViewGroup.LayoutParams.MATCH_PARENT
 
         view?.post {
             val parent = view?.parent as View

@@ -5,19 +5,19 @@ buildscript {
     ext.versions = [
             'compileSdk'    : 28,
             'buildTools'    : '28.0.3',
-            'minSdk'        : 15,
+            'minSdk'        : 21,
             'targetSdk'     : 28,
             'kotlin': [
                     'stdlib': '1.3.10',
             ],
             'android': [
-                    'material': '1.0.0'
+                    'material': '1.1.0-alpha10'
             ],
             'androidx': [
                     'ktx': [
-                            'core': '1.0.1',
+                            'core': '1.1.0',
                     ],
-                    'appCompat': '1.0.2',
+                    'appCompat': '1.1.0',
                     'constraintLayout': '1.1.3',
                     'cardview': '1.0.0',
             ]
@@ -29,7 +29,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.6.0-alpha11'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin.stdlib}"
 
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'

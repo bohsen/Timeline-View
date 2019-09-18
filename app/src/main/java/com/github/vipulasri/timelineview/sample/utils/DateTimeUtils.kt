@@ -16,7 +16,7 @@ object DateTimeUtils {
     fun parseDateTime(dateString: String, originalFormat: String, outputFromat: String): String {
 
         val formatter = SimpleDateFormat(originalFormat, Locale.US)
-        var date: Date? = null
+        val date: Date
         return try {
             date = formatter.parse(dateString)
 
@@ -33,11 +33,11 @@ object DateTimeUtils {
     fun getRelativeTimeSpan(dateString: String, originalFormat: String): String {
 
         val formatter = SimpleDateFormat(originalFormat, Locale.US)
-        var date: Date? = null
+        val date: Date
         return try {
             date = formatter.parse(dateString)
 
-            DateUtils.getRelativeTimeSpanString(date!!.time).toString()
+            DateUtils.getRelativeTimeSpanString(date.time).toString()
 
         } catch (e: ParseException) {
             e.printStackTrace()
